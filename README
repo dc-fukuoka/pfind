@@ -6,15 +6,15 @@ Cuerrent limitations:
   - Asterisk can be used for <filename>, but not for <search directory>.
   - Only file can be searched.
 
-Performance compareson between GNU find + xargs -P<NCPUs> vs pfind(on Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz):
+Performance compareson (on Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz):
 --------------------------
 == GNU find(serial) ==
-[fukuoka@rokuchan85 ~]:25003>time find /work/workdir1/fukuoka/HPCRT/ -type f -name "HPCRT2985.tgz"
+[fukuoka@rokuchan85 ~]:25024>time find /work/workdir1/fukuoka/HPCRT/ -type f -name "HPCRT2985.tgz"
 /work/workdir1/fukuoka/HPCRT/2985/tmp/HPCRT2985.tgz
 
-real    3m6.844s
-user    0m2.150s
-sys     0m25.124s
+real    0m17.884s
+user    0m1.630s
+sys     0m6.423s
 
 == GNU find + xargs ==
 [fukuoka@rokuchan85 ~]:25007>time gnupfind /work/workdir1/fukuoka/HPCRT/ "HPCRT2985.tgz"
