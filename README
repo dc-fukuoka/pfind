@@ -8,20 +8,31 @@ Cuerrent limitations:
 
 Performance compareson between GNU find + xargs -P<NCPUs> vs pfind(on Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz):
 --------------------------
-[fukuoka@rokuchan85 fukuoka]:25128>time pfind /work/workdir1/fukuoka/HPCRT/ "HPCRT2985.tgz"
+== GNU find(serial) ==
+[fukuoka@rokuchan85 ~]:25003>time find /work/workdir1/fukuoka/HPCRT/ -type f -name "HPCRT2985.tgz"
 /work/workdir1/fukuoka/HPCRT/2985/tmp/HPCRT2985.tgz
 
-real    0m7.016s
-user    0m2.489s
-sys     0m5.634s
-[fukuoka@rokuchan85 fukuoka]:25130>time gnupfind /work/workdir1/fukuoka/HPCRT/ "HPCRT2985.tgz"
+real    3m6.844s
+user    0m2.150s
+sys     0m25.124s
+
+== GNU find + xargs ==
+[fukuoka@rokuchan85 ~]:25007>time gnupfind /work/workdir1/fukuoka/HPCRT/ "HPCRT2985.tgz"
 /work/workdir1/fukuoka/HPCRT/2985/tmp/HPCRT2985.tgz
 
-real    0m19.031s
-user    0m3.281s
-sys     0m13.392s
+real    0m22.428s
+user    0m3.505s
+sys     0m15.301s
 
-== just a reference, linked list version ==
+== pfind ==
+[fukuoka@rokuchan85 ~]:25008>time pfind /work/workdir1/fukuoka/HPCRT/ "HPCRT2985.tgz"
+/work/workdir1/fukuoka/HPCRT/2985/tmp/HPCRT2985.tgz
+
+real    0m7.382s
+user    0m2.421s
+sys     0m6.941s
+
+== just a reference, linked list version of pfind ==
 [fukuoka@rokuchan85 fukuoka]:25129>time pfind.list /work/workdir1/fukuoka/HPCRT/ "HPCRT2985.tgz"
 /work/workdir1/fukuoka/HPCRT/2985/tmp/HPCRT2985.tgz
 
