@@ -12,9 +12,6 @@ Prefix: /usr
 %description
 A simple parallel find command which is parallelized by OpenMP.
 
-# to disable debuginfo
-%debug_package %{nil}
-
 %prep
 %setup -q
 
