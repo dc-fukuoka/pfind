@@ -27,7 +27,7 @@ static vector_t *vec_push(vector_t *q, const char *str)
 	if (!q) {
 		p = (vector_t*)malloc(sizeof(*p));
 		p->_str = (char**)malloc(sizeof(*(p->_str))*size);
-		p->_str[size-1] =malloc(sizeof(*str)*(strlen(str)+1));
+		p->_str[size-1] = malloc(sizeof(*str)*(strlen(str)+1));
 		strcpy(p->_str[size-1], str);
 		p->_size = size++;
 		return p;
@@ -85,7 +85,6 @@ static void get_nofile(void)
 			nofile_per_thread =rlim.rlim_cur / omp_get_num_threads();
 		}
 	}
-
 }
 
 static void parse_args(int argc, char **argv)
