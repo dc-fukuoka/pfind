@@ -40,4 +40,19 @@ real    0m11.745s
 user    0m35.596s
 sys     0m4.239s
 
+-- gnupfind(): a simple find bash function by GNU find + xargs
+[fukuoka@rokuchan85 ~]:25021>type gnupfind
+gnupfind is a function
+gnupfind ()
+{
+    dir=$1;
+    filename=$2;
+    ncores=$((`cut -d"-" -f2 /sys/devices/system/cpu//online`+1));
+    found=`find $dir -maxdepth 1 -type f -name $filename`;
+    if [ -n $found ] && [ "x$found" != "x" ]; then
+        echo $found;
+    else
+        find $dir -maxdepth 1 -type d | xargs -P$ncores -IXXX find XXX -type f -name $filename | sort -u;
+    fi
+}
 --------------------------
