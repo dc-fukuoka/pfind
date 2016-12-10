@@ -185,8 +185,10 @@ static void readd(DIR *dir)
 			vp = vec_push(vp, buf);
 		}
 	}
-	pfind(vp);
-	vec_clear(vp);
+	if (vp) {
+		pfind(vp);
+		vec_clear(vp);
+	}
 	closedir(dir);
 }
 
